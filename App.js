@@ -4,7 +4,7 @@ import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainTabScreen from './src/screens/MainTabScreen';
 import { NavigationContainer } from '@react-navigation/native';
-
+import {DrawerContent} from './src/screens/DrawerContent';
 
 
 
@@ -18,7 +18,7 @@ const Drawer = createDrawerNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator drawerContent={props => <DrawerContent{ ... props}/>} >
         <Drawer.Screen name="Home" component={MainTabScreen} />
         {/* <Drawer.Screen name="Details" component={DetailsStackScreen} /> */}
       </Drawer.Navigator>
