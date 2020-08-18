@@ -1,27 +1,123 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { Avatar, Title, Caption, Drawer, Text, TouchableRipple, Switch } from 'react-native-paper';
+import { Avatar, Title, Caption, Drawer, Text, TouchableRipple, Switch, Paragraph } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { color } from 'react-native-reanimated';
+
+
 export function DrawerContent(props) {
+
+    const [isDarkTheme, setIsDarkTheme] = React.useState(false);
+    const toggleTheme = () => {
+        setIsDarkTheme(!isDarkTheme);
+    }
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
-                <View>
-                    <Text>Main Content</Text>
+                <View style={styles.drawerContent}>
+                    <View style={styles.userInfoSection}>
+                        <View style={{ flexDirection: 'row', marginTop: 15 }}>
+                            <Avatar.Image
+                                source={require('../assets/images/a.jpg')}
+                                size={50}
+                            />
+                            <View style={{ marginLeft: 15, flexDirection: 'column' }}>
+                                <Title style={styles.title}>Laura isabela</Title>
+                                <Caption style={styles.caption}>@laura_is</Caption>
+                            </View>
+                        </View>
+
+                        <View style={styles.row}>
+                            <View style={styles.section}>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>
+                                    80
+                                    </Paragraph>
+                                <Caption style={styles.caption}>Following</Caption>
+                            </View>
+                            <View style={styles.section}>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>
+                                    800
+                                    </Paragraph>
+                                <Caption style={styles.caption}>Followers</Caption>
+                            </View>
+                        </View>
+
+                        <Drawer.Section style={styles.drawerSection}>
+                            <DrawerItem
+                                icon={({ color, size }) => (
+                                    <Icon
+                                        name="home-outline"
+                                        color={color}
+                                        size={size} />
+                                )}
+                                label="Home"
+                                onPress={() => {props.navigation.navigate('Home') }}
+                            />
+                            <DrawerItem
+                                icon={({ color, size }) => (
+                                    <Icon
+                                        name="home-outline"
+                                        color={color}
+                                        size={size} />
+                                )}
+                                label="Profile"
+                                onPress={() => {props.navigation.navigate('Profile')}}
+                            />
+                            <DrawerItem
+                                icon={({ color, size }) => (
+                                    <Icon
+                                        name="home-outline"
+                                        color={color}
+                                        size={size} />
+                                )}
+                                label="Bookmarks"
+                                onPress={() => {props.navigation.navigate('BookmarkScreen') }}
+                            />
+                            <DrawerItem
+                                icon={({ color, size }) => (
+                                    <Icon
+                                        name="home-outline"
+                                        color={color}
+                                        size={size} />
+                                )}
+                                label="Settings"
+                                onPress={() => { props.navigation.navigate('SettingsScreen') }}
+                            />
+                            <DrawerItem
+                                icon={({ color, size }) => (
+                                    <Icon
+                                        name="home-outline"
+                                        color={color}
+                                        size={size} />
+                                )}
+                                label="Support"
+                                onPress={() => { props.navigation.navigate('SupportScreen') }}
+                            />
+                        </Drawer.Section>
+
+                        <Drawer.Section title="Preferences">
+                                <TouchableRipple onPress={() => {toggleTheme()}}>
+                                    <View style={styles.preference}>
+                                        <Text>Dark Theme</Text>
+                                        <Switch value={isDarkTheme} />
+                                    </View>
+                                </TouchableRipple>
+                        </Drawer.Section>
+
+                    </View>
                 </View>
             </DrawerContentScrollView>
             <Drawer.Section style={styles.bottomDrawerSection}>
-                <DrawerItem 
-                    icon={({color, size}) => (
+                <DrawerItem
+                    icon={({ color, size }) => (
                         <Icon
-                        name="exit-to-app"
-                        color={color}
-                        size={size} />
+                            name="exit-to-app"
+                            color={color}
+                            size={size} />
                     )}
                     label="Sign Out"
-                    onPress={() => {}}
+                    onPress={() => { }}
                 />
             </Drawer.Section>
         </View>
