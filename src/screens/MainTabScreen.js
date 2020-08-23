@@ -9,7 +9,11 @@ import DetailsScreen from './DetailsScreen';
 import ExploreScreen from './ExploreScreen';
 import ProfileScreen from './ProfileScreen';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {Image} from 'react-native'
+
+
+import { Button } from 'react-native-paper';
+import { IconProfile, IconHome, IconMaps } from '../assets';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -18,107 +22,111 @@ const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
 
 const MainTabScreen = () => (
-    <Tab.Navigator
-      initialRouteName="Home"
-      activeColor="#fff"
-      style={{ backgroundColor: 'tomato' }}
-    >
-      <Tab.Screen
-        name="Home"
-        component={HomeStackScreen}
-        options={{
-          tabBarLabel: 'Home',
-          tabBarColor: 'magenta',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Details"
-        component={DetailsStackScreen}
-        options={{
-          tabBarLabel: 'Details',
-          tabBarColor: 'orange',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={26} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarLabel: 'Profile',
-          tabBarColor: 'red',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Explore"
-        component={ExploreScreen}
-        options={{
-          tabBarLabel: 'Explore',
-          tabBarColor: 'green',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
+  <Tab.Navigator
+    initialRouteName="Home"
+    activeColor="#fff"
+    style={{ backgroundColor: 'tomato' }}
+  >
+    <Tab.Screen
+      name="Home"
+      component={HomeStackScreen}
+      options={{
+        tabBarLabel: 'Home',
+        tabBarColor: 'magenta',
+        tabBarIcon: ({ color }) => (
+          // <MaterialCommunityIcons name="account-circle" color={color} size={26} />
+          <IconMaps />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Details"
+      component={DetailsStackScreen}
+      options={{
+        tabBarLabel: 'Details',
+        tabBarColor: 'orange',
+        tabBarIcon: ({ color }) => (
+          // <MaterialCommunityIcons name="bell" color={color} size={26} />
+          <IconHome color={color} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Profile"
+      component={ProfileScreen}
+      options={{
+        tabBarLabel: 'Profile',
+        tabBarColor: 'red',
+        tabBarIcon: ({ color }) => (
+          // <MaterialCommunityIcons name="account" color={color} size={26} />
+          <IconProfile color={color} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Explore"
+      component={ExploreScreen}
+      options={{
+        tabBarLabel: 'Explore',
+        tabBarColor: 'green',
+        tabBarIcon: ({ color }) => (
+          // <MaterialCommunityIcons name="account" color={color} size={26} />
+          <IconProfile color={color} />
+        ),
+      }}
+    />
+  </Tab.Navigator>
 
 );
 export default MainTabScreen;
 
 const HomeStackScreen = ({ navigation }) => (
-    <HomeStack.Navigator screenOptions={{
-      headerStyle: {
-        backgroundColor: 'magenta',
-      },
-      headerTintColor: 'white',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      }
-    }}>
-      <HomeStack.Screen name="Home" component={HomeScreen} options={{
-        title: "Overview",
-        headerLeft: () => (
-          <Icon.Button 
-          name="facebook" 
-          size={25} 
-          backgroundColor="magenta" 
-          onPress={() => {navigation.openDrawer()}}></Icon.Button>
-        )  
-  
-      }} />
-    </HomeStack.Navigator>
-  
-  );
-  const DetailsStackScreen = ({ navigation }) => (
-    <DetailsStack.Navigator screenOptions={{
-      headerStyle: {
-        backgroundColor: 'orange',
-      },
-      headerTintColor: 'white',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      }
-    }}>
-      <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
-          
-        headerLeft: () => (
-          <Icon.Button 
-          name="facebook" 
-          size={25} 
-          backgroundColor="orange" 
-          onPress={() => {navigation.openDrawer()}}></Icon.Button>
-        )  
-  
-      }} />
-    </DetailsStack.Navigator>
+  <HomeStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: 'magenta',
+    },
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
+  }}>
+    <HomeStack.Screen name="Home" component={HomeScreen} options={{
+      title: "Overview",
+      headerLeft: () => (
+        <Button  onPress={() => navigation.openDrawer()}>
+         <Image source={require('../assets/images/bar.png')} style={{width: 25, height:25}} />
+        </Button>
+      )
 
 
-  
-  );
+    }} />
+  </HomeStack.Navigator>
+
+);
+const DetailsStackScreen = ({ navigation }) => (
+  <DetailsStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: 'orange',
+    },
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
+  }}>
+    <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
+      headerLeft: () => (
+        <Button  onPress={() => navigation.openDrawer()}>
+         <Image source={require('../assets/images/bar.png')} style={{width: 25, height:25}} />
+        </Button>
+      )
+    }} />
+  </DetailsStack.Navigator>
+
+
+
+);
+// <Icon.Button
+          // name="facebook" 
+          // size={25} 
+          // backgroundColor="orange" 
+          // ></Icon.Button> 
