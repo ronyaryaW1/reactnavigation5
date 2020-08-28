@@ -5,6 +5,8 @@ import { Avatar, Title, Caption, Drawer, Text, TouchableRipple, Switch, Paragrap
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { color } from 'react-native-reanimated';
 
+import { AuthContext } from '../component/context';
+
 
 export function DrawerContent(props) {
 
@@ -12,6 +14,8 @@ export function DrawerContent(props) {
     const toggleTheme = () => {
         setIsDarkTheme(!isDarkTheme);
     }
+
+    const { signOut } = React.useContext(AuthContext);
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
@@ -117,7 +121,7 @@ export function DrawerContent(props) {
                             size={size} />
                     )}
                     label="Sign Out"
-                    onPress={() => { }}
+                    onPress={() => {signOut()}}
                 />
             </Drawer.Section>
         </View>
