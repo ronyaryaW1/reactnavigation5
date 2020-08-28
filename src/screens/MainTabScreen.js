@@ -2,6 +2,7 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 
 import HomeScreen from './HomeScreen';
@@ -35,7 +36,12 @@ const MainTabScreen = () => (
         tabBarColor: 'magenta',
         tabBarIcon: ({ color }) => (
           // <MaterialCommunityIcons name="account-circle" color={color} size={26} />
-          <IconMaps />
+          // <IconMaps />
+           <MaterialIcons 
+                        name="home"
+                        color={color}
+                        size={20}
+                    />
         ),
       }}
     />
@@ -47,7 +53,12 @@ const MainTabScreen = () => (
         tabBarColor: 'orange',
         tabBarIcon: ({ color }) => (
           // <MaterialCommunityIcons name="bell" color={color} size={26} />
-          <IconHome color={color} />
+          // <IconHome color={color} />
+          <MaterialIcons 
+                        name="build"
+                        color={color}
+                        size={20}
+                    />
         ),
       }}
     />
@@ -59,7 +70,13 @@ const MainTabScreen = () => (
         tabBarColor: 'red',
         tabBarIcon: ({ color }) => (
           // <MaterialCommunityIcons name="account" color={color} size={26} />
-          <IconProfile color={color} />
+          // <IconProfile color={color} />
+          <MaterialIcons 
+                        name="person"
+                        color={color}
+                        size={20}
+                    />
+
         ),
       }}
     />
@@ -71,7 +88,12 @@ const MainTabScreen = () => (
         tabBarColor: 'green',
         tabBarIcon: ({ color }) => (
           // <MaterialCommunityIcons name="account" color={color} size={26} />
-          <IconProfile color={color} />
+          // <IconProfile color={color} />
+          <MaterialIcons 
+                        name="navigation"
+                        color={color}
+                        size={20}
+                    />
         ),
       }}
     />
@@ -94,7 +116,12 @@ const HomeStackScreen = ({ navigation }) => (
       title: "Overview",
       headerLeft: () => (
         <Button  onPress={() => navigation.openDrawer()}>
-         <Image source={require('../assets/images/bar.png')} style={{width: 25, height:25}} />
+         {/* <Image source={require('../assets/images/bar.png')} style={{width: 25, height:25}} /> */}
+         <MaterialIcons 
+                        name="menu"
+                        color='#fff'
+                        size={20}
+                    />
         </Button>
       )
 
@@ -116,7 +143,12 @@ const DetailsStackScreen = ({ navigation }) => (
     <DetailsStack.Screen name="Details" component={DetailsScreen} options={{
       headerLeft: () => (
         <Button  onPress={() => navigation.openDrawer()}>
-         <Image source={require('../assets/images/bar.png')} style={{width: 25, height:25}} />
+         {/* <Image source={require('../assets/images/bar.png')} style={{width: 25, height:25}} /> */}
+         <MaterialIcons 
+                        name="menu"
+                        color='#fff'
+                        size={20}
+                    />
         </Button>
       )
     }} />
@@ -125,8 +157,3 @@ const DetailsStackScreen = ({ navigation }) => (
 
 
 );
-// <Icon.Button
-          // name="facebook" 
-          // size={25} 
-          // backgroundColor="orange" 
-          // ></Icon.Button> 

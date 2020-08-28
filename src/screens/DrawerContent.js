@@ -3,7 +3,8 @@ import { View, StyleSheet } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { Avatar, Title, Caption, Drawer, Text, TouchableRipple, Switch, Paragraph } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { color } from 'react-native-reanimated';
+import { color } from 'react-native-reanimated'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { AuthContext } from '../component/context';
 
@@ -50,50 +51,55 @@ export function DrawerContent(props) {
                         <Drawer.Section style={styles.drawerSection}>
                             <DrawerItem
                                 icon={({ color, size }) => (
-                                    <Icon
-                                        name="home-outline"
+                                    <MaterialIcons
+                                        name="home"
                                         color={color}
-                                        size={size} />
+                                        size={size}
+                                    />
                                 )}
                                 label="Home"
-                                onPress={() => {props.navigation.navigate('Home') }}
+                                onPress={() => { props.navigation.navigate('Home') }}
                             />
                             <DrawerItem
                                 icon={({ color, size }) => (
-                                    <Icon
-                                        name="home-outline"
+                                    <MaterialIcons
+                                        name="person"
                                         color={color}
-                                        size={size} />
+                                        size={size}
+                                    />
                                 )}
                                 label="Profile"
-                                onPress={() => {props.navigation.navigate('Profile')}}
+                                onPress={() => { props.navigation.navigate('Profile') }}
                             />
                             <DrawerItem
                                 icon={({ color, size }) => (
-                                    <Icon
-                                        name="home-outline"
+                                    <MaterialIcons
+                                        name="book"
                                         color={color}
-                                        size={size} />
+                                        size={size}
+                                    />
                                 )}
                                 label="Bookmarks"
-                                onPress={() => {props.navigation.navigate('BookmarkScreen') }}
+                                onPress={() => { props.navigation.navigate('BookmarkScreen') }}
                             />
                             <DrawerItem
                                 icon={({ color, size }) => (
-                                    <Icon
-                                        name="home-outline"
+                                    <MaterialIcons
+                                        name="settings"
                                         color={color}
-                                        size={size} />
+                                        size={size}
+                                    />
                                 )}
                                 label="Settings"
                                 onPress={() => { props.navigation.navigate('SettingsScreen') }}
                             />
                             <DrawerItem
                                 icon={({ color, size }) => (
-                                    <Icon
-                                        name="home-outline"
+                                    <MaterialIcons
+                                        name="settings"
                                         color={color}
-                                        size={size} />
+                                        size={size}
+                                    />
                                 )}
                                 label="Support"
                                 onPress={() => { props.navigation.navigate('SupportScreen') }}
@@ -101,12 +107,12 @@ export function DrawerContent(props) {
                         </Drawer.Section>
 
                         <Drawer.Section title="Preferences">
-                                <TouchableRipple onPress={() => {toggleTheme()}}>
-                                    <View style={styles.preference}>
-                                        <Text>Dark Theme</Text>
-                                        <Switch value={isDarkTheme} />
-                                    </View>
-                                </TouchableRipple>
+                            <TouchableRipple onPress={() => { toggleTheme() }}>
+                                <View style={styles.preference}>
+                                    <Text>Dark Theme</Text>
+                                    <Switch value={isDarkTheme} />
+                                </View>
+                            </TouchableRipple>
                         </Drawer.Section>
 
                     </View>
@@ -115,7 +121,7 @@ export function DrawerContent(props) {
             <Drawer.Section style={styles.bottomDrawerSection}>
                 <DrawerItem
                     icon={({ color, size }) => (
-                        <Icon
+                        <MaterialIcons
                             name="exit-to-app"
                             color={color}
                             size={size} />

@@ -50,6 +50,10 @@ const SignInScreen = ({ navigation }) => {
         });
     }
 
+    const loginHandle = (username, password) => {
+        signIn(username, password)
+    }
+
     return (
         <View style={styles.container}>
         <StatusBar backgroundColor="#009387" barStyle="light-content" />
@@ -120,7 +124,7 @@ const SignInScreen = ({ navigation }) => {
                 <View style={styles.button}>
                 <TouchableOpacity 
                     style={styles.signIn}
-                    onPress={() => {signIn()}}>
+                    onPress={() => {loginHandle( data.username, data.password )}}>
                     <LinearGradient
                         colors={['#08d4c4', '#01ab9d']}
                         style={styles.signIn}

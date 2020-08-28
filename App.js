@@ -20,6 +20,7 @@ const Drawer = createDrawerNavigator();
 const App = () => {
   // const [isLoading, setIsLoading ] = React.useState(true);
   // const [useToken, setUserToken ] = React.useState(null);
+
   const initialLoginState = {
     isLoading: true,
     userName: null, 
@@ -65,10 +66,11 @@ const App = () => {
       // setUserToken('aaa');
       // setIsLoading(false);
       let userToken;
-      userName= null;
+      userToken= null;
       if( userName == 'user' && password == 'pass' ) {
         userToken = 'aaa';
       }
+      console.log('user token: ', userToken);
       dispatch({ type: 'LOGIN', id: userName, token: userToken});
     },
     signOut: () => {
@@ -85,7 +87,10 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       // setIsLoading(false);
-      dispatch({ type: 'RETRIEVE_TOKEN',  token: 'aaa'});
+      let userToken;
+      userToken = 'fff'
+      console.log('user token: ', userToken);
+      dispatch({ type: 'RETRIEVE_TOKEN',  token: userToken});
     }, 1000);
   }, []);
 
@@ -100,7 +105,7 @@ const App = () => {
   return (
     <AuthContext.Provider  value={authContext} >
     <NavigationContainer>
-    {loginState.useToken !== null ? (
+    {loginState.userToken !== null ? (
       <Drawer.Navigator drawerContent={props => <DrawerContent{ ... props}/>} >
         <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
         <Drawer.Screen name="SupportScreen" component={SupportScreen} />
